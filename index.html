@@ -1113,298 +1113,44 @@ button {
 
 const exercises = {
 
-    "leg-press": {
-        name: "Leg Press",
+    "leg-press": { name: "Leg Press", frames: ["leg-press-frame-1.svg", "leg-press-frame-2.svg", "leg-press-frame-3.svg"] },
+    "leg-extension": { name: "Leg Extension", frames: ["leg-extension-frame-1.svg", "leg-extension-frame-2.svg", "leg-extension-frame-3.svg"] },
+    "leg-curl": { name: "Leg Curl", frames: ["leg-curl-frame-1.svg", "leg-curl-frame-2.svg", "leg-curl-frame-3.svg"] },
+    "hip-abduction-machine": { name: "Hip Abduction Machine", frames: ["hip-abduction-machine-frame-1.svg", "hip-abduction-machine-frame-2.svg", "hip-abduction-machine-frame-3.svg"] },
+    "standing-calf-raise": { name: "Standing Calf Raise", frames: ["standing-calf-raise-frame-1.svg", "standing-calf-raise-frame-2.svg", "standing-calf-raise-frame-3.svg"] },
 
-        frames: [
-            "leg-press-frame-1.svg",
-            "leg-press-frame-2.svg",
-            "leg-press-frame-3.svg"
-        ]
-    },
+    "wide-grip-lat-pulldown": { name: "Wide-Grip Lat Pulldown", frames: ["wide-grip-lat-pulldown-frame-1.svg", "wide-grip-lat-pulldown-frame-2.svg", "wide-grip-lat-pulldown-frame-3.svg"] },
+    "seated-row": { name: "Seated Row", frames: ["seated-row-frame-1.svg", "seated-row-frame-2.svg", "seated-row-frame-3.svg"] },
+    "assisted-pull-up": { name: "Assisted Pull-Up", frames: ["assisted-pull-up-frame-1.svg", "assisted-pull-up-frame-2.svg", "assisted-pull-up-frame-3.svg"] },
+    "chest-supported-row": { name: "Chest-Supported Row", frames: ["chest-supported-row-frame-1.svg", "chest-supported-row-frame-2.svg", "chest-supported-row-frame-3.svg"] },
+    "straight-arm-pulldown": { name: "Straight-Arm Pulldown", frames: ["straight-arm-pulldown-frame-1.svg", "straight-arm-pulldown-frame-2.svg", "straight-arm-pulldown-frame-3.svg"] },
+    "face-pull": { name: "Face Pull", frames: ["face-pull-frame-1.svg", "face-pull-frame-2.svg", "face-pull-frame-3.svg"] },
 
+    "preacher-curl": { name: "Preacher Curl", frames: ["preacher-curl-frame-1.svg", "preacher-curl-frame-2.svg", "preacher-curl-frame-3.svg"] },
+    "bicep-curl": { name: "Biceps Curl", frames: ["bicep-curl-frame-1.svg", "bicep-curl-frame-2.svg", "bicep-curl-frame-3.svg"] },
+    "hammer-curl": { name: "Hammer Curl", frames: ["hammer-curl-frame-1.svg", "hammer-curl-frame-2.svg", "hammer-curl-frame-3.svg"] },
+    "cable-curl": { name: "Cable Curl", frames: ["cable-curl-frame-1.svg", "cable-curl-frame-2.svg", "cable-curl-frame-3.svg"] },
+    "incline-dumbbell-curl": { name: "Incline Dumbbell Curl", frames: ["incline-dumbbell-curl-frame-1.svg", "incline-dumbbell-curl-frame-2.svg", "incline-dumbbell-curl-frame-3.svg"] },
 
-    "leg-extension": {
-        name: "Leg Extension",
+    "tricep-pushdown": { name: "Tricep Pushdown", frames: ["tricep-pushdown-frame-1.svg", "tricep-pushdown-frame-2.svg", "tricep-pushdown-frame-3.svg"] },
+    "overhead-tricep-extension": { name: "Overhead Tricep Extension", frames: ["overhead-tricep-extension-frame-1.svg", "overhead-tricep-extension-frame-2.svg", "overhead-tricep-extension-frame-3.svg"] },
+    "assisted-dip": { name: "Assisted Dip", frames: ["assisted-dip-frame-1.svg", "assisted-dip-frame-2.svg", "assisted-dip-frame-3.svg"] },
 
-        frames: [
-            "leg-extension-frame-1.svg",
-            "leg-extension-frame-2.svg",
-            "leg-extension-frame-3.svg"
-        ]
-    },
+    "machine-chest-press": { name: "Machine Chest Press", frames: ["machine-chest-press-frame-1.svg", "machine-chest-press-frame-2.svg", "machine-chest-press-frame-3.svg"] },
+    "pec-deck": { name: "Pec Deck", frames: ["pec-deck-frame-1.svg", "pec-deck-frame-2.svg", "pec-deck-frame-3.svg"] },
+    "machine-shoulder-press": { name: "Machine Shoulder Press", frames: ["machine-shoulder-press-frame-1.svg", "machine-shoulder-press-frame-2.svg", "machine-shoulder-press-frame-3.svg"] },
+    "lateral-raise": { name: "Lateral Raise", frames: ["lateral-raise-frame-1.svg", "lateral-raise-frame-2.svg", "lateral-raise-frame-3.svg"] },
+    "cable-lateral-raise": { name: "Cable Lateral Raise", frames: ["cable-lateral-raise-frame-1.svg", "cable-lateral-raise-frame-2.svg", "cable-lateral-raise-frame-3.svg"] },
 
+    "hack-squat": { name: "Hack Squat", frames: ["hack-squat-frame-1.svg", "hack-squat-frame-2.svg", "hack-squat-frame-3.svg"] },
+    "hip-adduction-machine": { name: "Hip Adduction Machine", frames: ["hip-adduction-machine-frame-1.svg", "hip-adduction-machine-frame-2.svg", "hip-adduction-machine-frame-3.svg"] },
+    "bulgarian-split-squat": { name: "Bulgarian Split Squat", frames: ["bulgarian-split-squat-frame-1.svg", "bulgarian-split-squat-frame-2.svg", "bulgarian-split-squat-frame-3.svg"] },
+    "dumbbell-shrug": { name: "Dumbbell Shrug", frames: ["dumbbell-shrug-frame-1.svg", "dumbbell-shrug-frame-2.svg", "dumbbell-shrug-frame-3.svg"] },
 
-    "leg-curl": {
-        name: "Leg Curl",
-
-        frames: [
-            "leg-curl-frame-1.svg",
-            "leg-curl-frame-2.svg",
-            "leg-curl-frame-3.svg"
-        ]
-    },
-
-
-    "hip-abduction": {
-        name: "Hip Abduction",
-
-        frames: [
-            "hip-abduction-machine-frame-1.svg",
-            "hip-abduction-machine-frame-2.svg",
-            "hip-abduction-machine-frame-3.svg"
-        ]
-    },
-
-
-    "standing-calf-raise": {
-        name: "Standing Calf Raise",
-
-        frames: [
-            "standing-calf-raise-frame-1.svg",
-            "standing-calf-raise-frame-2.svg",
-            "standing-calf-raise-frame-3.svg"
-        ]
-    },
-
-
-    "wide-grip-lat-pulldown": {
-        name: "Wide-Grip Lat Pulldown",
-
-        frames: [
-            "wide-grip-lat-pulldown-frame-1.svg",
-            "wide-grip-lat-pulldown-frame-2.svg",
-            "wide-grip-lat-pulldown-frame-3.svg"
-        ]
-    },
-
-
-    "seated-row": {
-        name: "Seated Row",
-
-        frames: [
-            "seated-row-frame-1.svg",
-            "seated-row-frame-2.svg",
-            "seated-row-frame-3.svg"
-        ]
-    },
-
-
-    "assisted-pull-up": {
-        name: "Assisted Pull-Up",
-
-        frames: [
-            "assisted-pull-up-frame-1.svg",
-            "assisted-pull-up-frame-2.svg",
-            "assisted-pull-up-frame-3.svg"
-        ]
-    },
-
-
-    "preacher-curl": {
-        name: "Preacher Curl",
-
-        frames: [
-            "preacher-curl-frame-1.svg",
-            "preacher-curl-frame-2.svg",
-            "preacher-curl-frame-3.svg"
-        ]
-    },
-
-
-    "crunch": {
-        name: "Crunch",
-
-        frames: [
-            "crunch-frame-1.svg",
-            "crunch-frame-2.svg",
-            "crunch-frame-3.svg"
-        ]
-    },
-
-
-    "reverse-crunch": {
-        name: "Reverse Crunch",
-
-        frames: [
-            "reverse-crunch-frame-1.svg",
-            "reverse-crunch-frame-2.svg",
-            "reverse-crunch-frame-3.svg"
-        ]
-    },
-
-
-    "plank": {
-        name: "Plank",
-
-        frames: [
-            "plank-frame-1.svg"
-        ]
-    },
-
-
-    "dead-bug": {
-        name: "Dead Bug",
-
-        frames: [
-            "dead-bug-frame-1.svg",
-            "dead-bug-frame-2.svg",
-            "dead-bug-frame-3.svg"
-        ]
-    },
-
-
-    "machine-chest-press": {
-        name: "Machine Chest Press",
-
-        frames: [
-            "machine-chest-press-frame-1.svg",
-            "machine-chest-press-frame-2.svg",
-            "machine-chest-press-frame-3.svg"
-        ]
-    },
-
-
-    "pec-deck": {
-        name: "Pec Deck",
-
-        frames: [
-            "pec-deck-frame-1.svg",
-            "pec-deck-frame-2.svg",
-            "pec-deck-frame-3.svg"
-        ]
-    },
-
-
-    "machine-shoulder-press": {
-        name: "Machine Shoulder Press",
-
-        frames: [
-            "machine-shoulder-press-frame-1.svg",
-            "machine-shoulder-press-frame-2.svg",
-            "machine-shoulder-press-frame-3.svg"
-        ]
-    },
-
-
-    "lateral-raise": {
-        name: "Lateral Raise",
-
-        frames: [
-            "lateral-raise-frame-1.svg",
-            "lateral-raise-frame-2.svg",
-            "lateral-raise-frame-3.svg"
-        ]
-    },
-
-
-    "hack-squat": {
-        name: "Hack Squat",
-
-        frames: [
-            "hack-squat-frame-1.svg",
-            "hack-squat-frame-2.svg",
-            "hack-squat-frame-3.svg"
-        ]
-    }
-,
-
-    "bicep-curl": {
-        name: "Biceps Curl",
-        frames: ["bicep-curl-frame-1.svg","bicep-curl-frame-2.svg","bicep-curl-frame-3.svg"]
-    },
-    "hammer-curl": {
-        name: "Hammer Curl",
-        frames: ["hammer-curl-frame-1.svg","hammer-curl-frame-2.svg","hammer-curl-frame-3.svg"]
-    },
-    "cable-curl": {
-        name: "Cable Biceps Curl",
-        frames: ["cable-curl-frame-1.svg","cable-curl-frame-2.svg","cable-curl-frame-3.svg"]
-    },
-    "incline-curl": {
-        name: "Incline Dumbbell Curl",
-        frames: ["incline-curl-frame-1.svg","incline-curl-frame-2.svg","incline-curl-frame-3.svg"]
-    },
-    "triceps-pushdown": {
-        name: "Triceps Pushdown",
-        frames: ["triceps-pushdown-frame-1.svg","triceps-pushdown-frame-2.svg","triceps-pushdown-frame-3.svg"]
-    },
-    "overhead-triceps-extension": {
-        name: "Overhead Triceps Extension",
-        frames: ["overhead-triceps-extension-frame-1.svg","overhead-triceps-extension-frame-2.svg","overhead-triceps-extension-frame-3.svg"]
-    },
-    "assisted-dip": {
-        name: "Assisted Dip",
-        frames: ["assisted-dip-frame-1.svg","assisted-dip-frame-2.svg","assisted-dip-frame-3.svg"]
-    },
-    "incline-chest-press": {
-        name: "Incline Chest Press",
-        frames: ["incline-chest-press-frame-1.svg","incline-chest-press-frame-2.svg","incline-chest-press-frame-3.svg"]
-    },
-    "reverse-fly": {
-        name: "Reverse Fly",
-        frames: ["reverse-fly-frame-1.svg","reverse-fly-frame-2.svg","reverse-fly-frame-3.svg"]
-    },
-    "face-pull": {
-        name: "Face Pull",
-        frames: ["face-pull-frame-1.svg","face-pull-frame-2.svg","face-pull-frame-3.svg"]
-    },
-    "cable-lateral-raise": {
-        name: "Cable Lateral Raise",
-        frames: ["cable-lateral-raise-frame-1.svg","cable-lateral-raise-frame-2.svg","cable-lateral-raise-frame-3.svg"]
-    },
-    "shrug": {
-        name: "Shrug",
-        frames: ["shrug-frame-1.svg","shrug-frame-2.svg","shrug-frame-3.svg"]
-    },
-    "straight-arm-pulldown": {
-        name: "Straight-Arm Pulldown",
-        frames: ["straight-arm-pulldown-frame-1.svg","straight-arm-pulldown-frame-2.svg","straight-arm-pulldown-frame-3.svg"]
-    },
-    "chest-supported-row": {
-        name: "Chest-Supported Row",
-        frames: ["chest-supported-row-frame-1.svg","chest-supported-row-frame-2.svg","chest-supported-row-frame-3.svg"]
-    },
-    "single-arm-row": {
-        name: "Single-Arm Cable Row",
-        frames: ["single-arm-row-frame-1.svg","single-arm-row-frame-2.svg","single-arm-row-frame-3.svg"]
-    },
-    "romanian-deadlift": {
-        name: "Romanian Deadlift",
-        frames: ["romanian-deadlift-frame-1.svg","romanian-deadlift-frame-2.svg","romanian-deadlift-frame-3.svg"]
-    },
-    "glute-kickback": {
-        name: "Glute Kickback",
-        frames: ["glute-kickback-frame-1.svg","glute-kickback-frame-2.svg","glute-kickback-frame-3.svg"]
-    },
-    "hip-adduction": {
-        name: "Hip Adduction",
-        frames: ["hip-adduction-frame-1.svg","hip-adduction-frame-2.svg","hip-adduction-frame-3.svg"]
-    },
-    "seated-calf-raise": {
-        name: "Seated Calf Raise",
-        frames: ["seated-calf-raise-frame-1.svg","seated-calf-raise-frame-2.svg","seated-calf-raise-frame-3.svg"]
-    },
-    "ab-machine": {
-        name: "Ab Machine",
-        frames: ["ab-machine-frame-1.svg","ab-machine-frame-2.svg","ab-machine-frame-3.svg"]
-    },
-    "cable-crunch": {
-        name: "Cable Crunch",
-        frames: ["cable-crunch-frame-1.svg","cable-crunch-frame-2.svg","cable-crunch-frame-3.svg"]
-    },
-    "hanging-knee-raise": {
-        name: "Hanging Knee Raise",
-        frames: ["hanging-knee-raise-frame-1.svg","hanging-knee-raise-frame-2.svg","hanging-knee-raise-frame-3.svg"]
-    },
-    "woodchop": {
-        name: "Cable Woodchop",
-        frames: ["woodchop-frame-1.svg","woodchop-frame-2.svg","woodchop-frame-3.svg"]
-    },
-    "bulgarian-split-squat": {
-        name: "Bulgarian Split Squat",
-        frames: ["bulgarian-split-squat-frame-1.svg","bulgarian-split-squat-frame-2.svg","bulgarian-split-squat-frame-3.svg"]
-    }
+    "crunch": { name: "Crunch", frames: ["crunch-frame-1.svg", "crunch-frame-2.svg", "crunch-frame-3.svg"] },
+    "reverse-crunch": { name: "Reverse Crunch", frames: ["reverse-crunch-frame-1.svg", "reverse-crunch-frame-2.svg", "reverse-crunch-frame-3.svg"] },
+    "dead-bug": { name: "Dead Bug", frames: ["dead-bug-frame-1.svg", "dead-bug-frame-2.svg", "dead-bug-frame-3.svg"] },
+    "hanging-knee-raise": { name: "Hanging Knee Raise", frames: ["hanging-knee-raise-frame-1.svg", "hanging-knee-raise-frame-2.svg", "hanging-knee-raise-frame-3.svg"] },
 
 };
 
@@ -1421,55 +1167,51 @@ const plans = {
         { exercise: "leg-press", sets: "3 × 10–12", weight: "30–50 kg" },
         { exercise: "leg-extension", sets: "2–3 × 10–12", weight: "10–20 kg" },
         { exercise: "leg-curl", sets: "3 × 10–12", weight: "10–20 kg" },
-        { exercise: "hip-abduction", sets: "2 × 12–15", weight: "10–20 kg" },
-        { exercise: "hip-adduction", sets: "2 × 12–15", weight: "10–20 kg" },
-        { exercise: "seated-calf-raise", sets: "3 × 12–15", weight: "Light–moderate" }
+        { exercise: "hip-abduction-machine", sets: "2 × 12–15", weight: "10–20 kg" },
+        { exercise: "hip-adduction-machine", sets: "2 × 12–15", weight: "10–20 kg" },
+        { exercise: "standing-calf-raise", sets: "3 × 12–15", weight: "10–20 kg" }
     ],
 
     Tuesday: [
         { exercise: "wide-grip-lat-pulldown", sets: "3 × 8–12", weight: "15–25 kg" },
         { exercise: "seated-row", sets: "3 × 8–12", weight: "15–25 kg" },
-        { exercise: "chest-supported-row", sets: "2–3 × 10–12", weight: "Light–moderate" },
+        { exercise: "chest-supported-row", sets: "2 × 10–12", weight: "Light–moderate" },
         { exercise: "straight-arm-pulldown", sets: "2 × 12–15", weight: "Light–moderate" },
-        { exercise: "reverse-fly", sets: "2 × 12–15", weight: "Light–moderate" },
         { exercise: "face-pull", sets: "2 × 12–15", weight: "Light–moderate" },
+        { exercise: "assisted-pull-up", sets: "2 × 8–12", weight: "Comfortable assistance" },
         { exercise: "preacher-curl", sets: "2 × 10–12", weight: "5–10 kg" },
         { exercise: "hammer-curl", sets: "2 × 10–12", weight: "Light–moderate" }
     ],
 
     Wednesday: [
         { exercise: "machine-chest-press", sets: "3 × 8–12", weight: "10–20 kg" },
-        { exercise: "incline-chest-press", sets: "3 × 8–12", weight: "Light–moderate" },
         { exercise: "pec-deck", sets: "2 × 10–15", weight: "10–20 kg" },
         { exercise: "machine-shoulder-press", sets: "3 × 8–12", weight: "5–10 kg" },
         { exercise: "lateral-raise", sets: "3 × 12–15", weight: "5–10 kg" },
-        { exercise: "reverse-fly", sets: "2 × 12–15", weight: "Light–moderate" },
-        { exercise: "triceps-pushdown", sets: "3 × 10–15", weight: "Light–moderate" },
-        { exercise: "overhead-triceps-extension", sets: "2 × 10–12", weight: "Light–moderate" }
+        { exercise: "cable-lateral-raise", sets: "2 × 12–15", weight: "Light" },
+        { exercise: "tricep-pushdown", sets: "3 × 10–15", weight: "Light–moderate" },
+        { exercise: "overhead-tricep-extension", sets: "2 × 10–12", weight: "Light–moderate" },
+        { exercise: "assisted-dip", sets: "2 × 8–12", weight: "Comfortable assistance" }
     ],
 
     Thursday: [
         { exercise: "bicep-curl", sets: "3 × 10–12", weight: "Light–moderate" },
         { exercise: "cable-curl", sets: "2 × 10–15", weight: "Light–moderate" },
-        { exercise: "incline-curl", sets: "2 × 10–12", weight: "Light–moderate" },
-        { exercise: "triceps-pushdown", sets: "3 × 10–15", weight: "Light–moderate" },
-        { exercise: "overhead-triceps-extension", sets: "2 × 10–12", weight: "Light–moderate" },
-        { exercise: "assisted-dip", sets: "2 × 8–12", weight: "Comfortable assistance" },
-        { exercise: "cable-lateral-raise", sets: "2 × 12–15", weight: "Light" },
-        { exercise: "shrug", sets: "3 × 10–15", weight: "Light–moderate" }
+        { exercise: "incline-dumbbell-curl", sets: "2 × 10–12", weight: "Light" },
+        { exercise: "tricep-pushdown", sets: "3 × 10–15", weight: "Light–moderate" },
+        { exercise: "overhead-tricep-extension", sets: "2 × 10–12", weight: "Light–moderate" },
+        { exercise: "dumbbell-shrug", sets: "3 × 10–15", weight: "Light–moderate" }
     ],
 
     Friday: [
-        { exercise: "romanian-deadlift", sets: "3 × 8–12", weight: "Start light" },
         { exercise: "bulgarian-split-squat", sets: "2 × 8–12 / leg", weight: "Bodyweight/light" },
-        { exercise: "glute-kickback", sets: "2 × 12–15 / leg", weight: "Light–moderate" },
         { exercise: "leg-curl", sets: "3 × 10–12", weight: "10–20 kg" },
         { exercise: "standing-calf-raise", sets: "3 × 12–15", weight: "10–20 kg" },
-        { exercise: "ab-machine", sets: "3 × 10–15", weight: "Light–moderate" },
-        { exercise: "cable-crunch", sets: "2 × 10–15", weight: "Light–moderate" },
+        { exercise: "crunch", sets: "3 × 12–15", weight: "Bodyweight" },
+        { exercise: "reverse-crunch", sets: "2 × 10–15", weight: "Bodyweight" },
+        { exercise: "dead-bug", sets: "2 × 8–12 / side", weight: "Bodyweight" },
         { exercise: "hanging-knee-raise", sets: "2 × 8–12", weight: "Bodyweight" }
     ]
-
 };
 
 
