@@ -1307,6 +1307,104 @@ const exercises = {
             "hack-squat-frame-3.svg"
         ]
     }
+,
+
+    "bicep-curl": {
+        name: "Biceps Curl",
+        frames: ["bicep-curl-frame-1.svg","bicep-curl-frame-2.svg","bicep-curl-frame-3.svg"]
+    },
+    "hammer-curl": {
+        name: "Hammer Curl",
+        frames: ["hammer-curl-frame-1.svg","hammer-curl-frame-2.svg","hammer-curl-frame-3.svg"]
+    },
+    "cable-curl": {
+        name: "Cable Biceps Curl",
+        frames: ["cable-curl-frame-1.svg","cable-curl-frame-2.svg","cable-curl-frame-3.svg"]
+    },
+    "incline-curl": {
+        name: "Incline Dumbbell Curl",
+        frames: ["incline-curl-frame-1.svg","incline-curl-frame-2.svg","incline-curl-frame-3.svg"]
+    },
+    "triceps-pushdown": {
+        name: "Triceps Pushdown",
+        frames: ["triceps-pushdown-frame-1.svg","triceps-pushdown-frame-2.svg","triceps-pushdown-frame-3.svg"]
+    },
+    "overhead-triceps-extension": {
+        name: "Overhead Triceps Extension",
+        frames: ["overhead-triceps-extension-frame-1.svg","overhead-triceps-extension-frame-2.svg","overhead-triceps-extension-frame-3.svg"]
+    },
+    "assisted-dip": {
+        name: "Assisted Dip",
+        frames: ["assisted-dip-frame-1.svg","assisted-dip-frame-2.svg","assisted-dip-frame-3.svg"]
+    },
+    "incline-chest-press": {
+        name: "Incline Chest Press",
+        frames: ["incline-chest-press-frame-1.svg","incline-chest-press-frame-2.svg","incline-chest-press-frame-3.svg"]
+    },
+    "reverse-fly": {
+        name: "Reverse Fly",
+        frames: ["reverse-fly-frame-1.svg","reverse-fly-frame-2.svg","reverse-fly-frame-3.svg"]
+    },
+    "face-pull": {
+        name: "Face Pull",
+        frames: ["face-pull-frame-1.svg","face-pull-frame-2.svg","face-pull-frame-3.svg"]
+    },
+    "cable-lateral-raise": {
+        name: "Cable Lateral Raise",
+        frames: ["cable-lateral-raise-frame-1.svg","cable-lateral-raise-frame-2.svg","cable-lateral-raise-frame-3.svg"]
+    },
+    "shrug": {
+        name: "Shrug",
+        frames: ["shrug-frame-1.svg","shrug-frame-2.svg","shrug-frame-3.svg"]
+    },
+    "straight-arm-pulldown": {
+        name: "Straight-Arm Pulldown",
+        frames: ["straight-arm-pulldown-frame-1.svg","straight-arm-pulldown-frame-2.svg","straight-arm-pulldown-frame-3.svg"]
+    },
+    "chest-supported-row": {
+        name: "Chest-Supported Row",
+        frames: ["chest-supported-row-frame-1.svg","chest-supported-row-frame-2.svg","chest-supported-row-frame-3.svg"]
+    },
+    "single-arm-row": {
+        name: "Single-Arm Cable Row",
+        frames: ["single-arm-row-frame-1.svg","single-arm-row-frame-2.svg","single-arm-row-frame-3.svg"]
+    },
+    "romanian-deadlift": {
+        name: "Romanian Deadlift",
+        frames: ["romanian-deadlift-frame-1.svg","romanian-deadlift-frame-2.svg","romanian-deadlift-frame-3.svg"]
+    },
+    "glute-kickback": {
+        name: "Glute Kickback",
+        frames: ["glute-kickback-frame-1.svg","glute-kickback-frame-2.svg","glute-kickback-frame-3.svg"]
+    },
+    "hip-adduction": {
+        name: "Hip Adduction",
+        frames: ["hip-adduction-frame-1.svg","hip-adduction-frame-2.svg","hip-adduction-frame-3.svg"]
+    },
+    "seated-calf-raise": {
+        name: "Seated Calf Raise",
+        frames: ["seated-calf-raise-frame-1.svg","seated-calf-raise-frame-2.svg","seated-calf-raise-frame-3.svg"]
+    },
+    "ab-machine": {
+        name: "Ab Machine",
+        frames: ["ab-machine-frame-1.svg","ab-machine-frame-2.svg","ab-machine-frame-3.svg"]
+    },
+    "cable-crunch": {
+        name: "Cable Crunch",
+        frames: ["cable-crunch-frame-1.svg","cable-crunch-frame-2.svg","cable-crunch-frame-3.svg"]
+    },
+    "hanging-knee-raise": {
+        name: "Hanging Knee Raise",
+        frames: ["hanging-knee-raise-frame-1.svg","hanging-knee-raise-frame-2.svg","hanging-knee-raise-frame-3.svg"]
+    },
+    "woodchop": {
+        name: "Cable Woodchop",
+        frames: ["woodchop-frame-1.svg","woodchop-frame-2.svg","woodchop-frame-3.svg"]
+    },
+    "bulgarian-split-squat": {
+        name: "Bulgarian Split Squat",
+        frames: ["bulgarian-split-squat-frame-1.svg","bulgarian-split-squat-frame-2.svg","bulgarian-split-squat-frame-3.svg"]
+    }
 
 };
 
@@ -1319,153 +1417,57 @@ const exercises = {
 const plans = {
 
     Monday: [
-
-        {
-            exercise: "leg-press",
-            sets: "3 × 10–12",
-            weight: "30–50 kg"
-        },
-
-        {
-            exercise: "leg-extension",
-            sets: "2–3 × 10–12",
-            weight: "10–20 kg"
-        },
-
-        {
-            exercise: "leg-curl",
-            sets: "2–3 × 10–12",
-            weight: "10–20 kg"
-        },
-
-        {
-            exercise: "hip-abduction",
-            sets: "2 × 12–15",
-            weight: "10–20 kg"
-        },
-
-        {
-            exercise: "standing-calf-raise",
-            sets: "3 × 12–15",
-            weight: "10–20 kg"
-        }
-
+        { exercise: "hack-squat", sets: "3 × 8–12", weight: "Start very light" },
+        { exercise: "leg-press", sets: "3 × 10–12", weight: "30–50 kg" },
+        { exercise: "leg-extension", sets: "2–3 × 10–12", weight: "10–20 kg" },
+        { exercise: "leg-curl", sets: "3 × 10–12", weight: "10–20 kg" },
+        { exercise: "hip-abduction", sets: "2 × 12–15", weight: "10–20 kg" },
+        { exercise: "hip-adduction", sets: "2 × 12–15", weight: "10–20 kg" },
+        { exercise: "seated-calf-raise", sets: "3 × 12–15", weight: "Light–moderate" }
     ],
-
 
     Tuesday: [
-
-        {
-            exercise: "wide-grip-lat-pulldown",
-            sets: "2–3 × 10",
-            weight: "15–25 kg"
-        },
-
-        {
-            exercise: "seated-row",
-            sets: "2–3 × 10",
-            weight: "15–25 kg"
-        },
-
-        {
-            exercise: "assisted-pull-up",
-            sets: "2 × 8–12",
-            weight: "Comfortable assistance"
-        },
-
-        {
-            exercise: "preacher-curl",
-            sets: "2 × 10",
-            weight: "5–10 kg"
-        }
-
+        { exercise: "wide-grip-lat-pulldown", sets: "3 × 8–12", weight: "15–25 kg" },
+        { exercise: "seated-row", sets: "3 × 8–12", weight: "15–25 kg" },
+        { exercise: "chest-supported-row", sets: "2–3 × 10–12", weight: "Light–moderate" },
+        { exercise: "straight-arm-pulldown", sets: "2 × 12–15", weight: "Light–moderate" },
+        { exercise: "reverse-fly", sets: "2 × 12–15", weight: "Light–moderate" },
+        { exercise: "face-pull", sets: "2 × 12–15", weight: "Light–moderate" },
+        { exercise: "preacher-curl", sets: "2 × 10–12", weight: "5–10 kg" },
+        { exercise: "hammer-curl", sets: "2 × 10–12", weight: "Light–moderate" }
     ],
-
 
     Wednesday: [
-
-        {
-            exercise: "crunch",
-            sets: "3 × 12–15",
-            weight: "Bodyweight"
-        },
-
-        {
-            exercise: "reverse-crunch",
-            sets: "3 × 10–15",
-            weight: "Bodyweight"
-        },
-
-        {
-            exercise: "plank",
-            sets: "3 × 20–40 sec",
-            weight: "Bodyweight"
-        },
-
-        {
-            exercise: "dead-bug",
-            sets: "2 × 8–10 / side",
-            weight: "Bodyweight"
-        }
-
+        { exercise: "machine-chest-press", sets: "3 × 8–12", weight: "10–20 kg" },
+        { exercise: "incline-chest-press", sets: "3 × 8–12", weight: "Light–moderate" },
+        { exercise: "pec-deck", sets: "2 × 10–15", weight: "10–20 kg" },
+        { exercise: "machine-shoulder-press", sets: "3 × 8–12", weight: "5–10 kg" },
+        { exercise: "lateral-raise", sets: "3 × 12–15", weight: "5–10 kg" },
+        { exercise: "reverse-fly", sets: "2 × 12–15", weight: "Light–moderate" },
+        { exercise: "triceps-pushdown", sets: "3 × 10–15", weight: "Light–moderate" },
+        { exercise: "overhead-triceps-extension", sets: "2 × 10–12", weight: "Light–moderate" }
     ],
-
 
     Thursday: [
-
-        {
-            exercise: "machine-chest-press",
-            sets: "3 × 10–12",
-            weight: "10–20 kg"
-        },
-
-        {
-            exercise: "pec-deck",
-            sets: "2 × 10–12",
-            weight: "10–20 kg"
-        },
-
-        {
-            exercise: "machine-shoulder-press",
-            sets: "2 × 10",
-            weight: "5–10 kg"
-        },
-
-        {
-            exercise: "lateral-raise",
-            sets: "2 × 12–15",
-            weight: "5–10 kg"
-        }
-
+        { exercise: "bicep-curl", sets: "3 × 10–12", weight: "Light–moderate" },
+        { exercise: "cable-curl", sets: "2 × 10–15", weight: "Light–moderate" },
+        { exercise: "incline-curl", sets: "2 × 10–12", weight: "Light–moderate" },
+        { exercise: "triceps-pushdown", sets: "3 × 10–15", weight: "Light–moderate" },
+        { exercise: "overhead-triceps-extension", sets: "2 × 10–12", weight: "Light–moderate" },
+        { exercise: "assisted-dip", sets: "2 × 8–12", weight: "Comfortable assistance" },
+        { exercise: "cable-lateral-raise", sets: "2 × 12–15", weight: "Light" },
+        { exercise: "shrug", sets: "3 × 10–15", weight: "Light–moderate" }
     ],
 
-
     Friday: [
-
-        {
-            exercise: "hack-squat",
-            sets: "3 × 8–12",
-            weight: "Start very light"
-        },
-
-        {
-            exercise: "leg-curl",
-            sets: "3 × 10–12",
-            weight: "10–20 kg"
-        },
-
-        {
-            exercise: "leg-extension",
-            sets: "2 × 10–12",
-            weight: "10–20 kg"
-        },
-
-        {
-            exercise: "standing-calf-raise",
-            sets: "3 × 12–15",
-            weight: "10–20 kg"
-        }
-
+        { exercise: "romanian-deadlift", sets: "3 × 8–12", weight: "Start light" },
+        { exercise: "bulgarian-split-squat", sets: "2 × 8–12 / leg", weight: "Bodyweight/light" },
+        { exercise: "glute-kickback", sets: "2 × 12–15 / leg", weight: "Light–moderate" },
+        { exercise: "leg-curl", sets: "3 × 10–12", weight: "10–20 kg" },
+        { exercise: "standing-calf-raise", sets: "3 × 12–15", weight: "10–20 kg" },
+        { exercise: "ab-machine", sets: "3 × 10–15", weight: "Light–moderate" },
+        { exercise: "cable-crunch", sets: "2 × 10–15", weight: "Light–moderate" },
+        { exercise: "hanging-knee-raise", sets: "2 × 8–12", weight: "Bodyweight" }
     ]
 
 };
