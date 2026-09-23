@@ -1,0 +1,2505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GymFlow</title>
+
+<style>
+
+:root {
+    --bg: #0b0811;
+    --card: #15101f;
+    --card2: #1b1428;
+    --text: #f7f4fb;
+    --muted: #aaa1b8;
+    --purple: #8b5cf6;
+    --purple2: #a78bfa;
+    --green: #4ade80;
+    --red: #fb7185;
+    --border: #2b2238;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+button {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+/* =========================================================
+   GENERAL
+========================================================= */
+
+.container {
+    width: 100%;
+    max-width: 760px;
+    margin: auto;
+    padding: 20px;
+}
+
+
+/* =========================================================
+   SETUP
+========================================================= */
+
+#setup {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.setup-card {
+    width: 100%;
+    max-width: 500px;
+
+    background: var(--card);
+
+    border: 1px solid var(--border);
+    border-radius: 24px;
+
+    padding: 30px;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.35);
+}
+
+.logo {
+    font-size: 34px;
+    font-weight: 900;
+    letter-spacing: -1px;
+
+    margin-bottom: 8px;
+}
+
+.logo span {
+    color: var(--purple);
+}
+
+.setup-subtitle {
+    color: var(--muted);
+    line-height: 1.5;
+
+    margin-bottom: 28px;
+}
+
+.field {
+    margin-bottom: 18px;
+}
+
+.field label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: var(--muted);
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.field input,
+.field select {
+    width: 100%;
+
+    border: 1px solid var(--border);
+
+    background: #0f0b17;
+    color: white;
+
+    padding: 14px;
+
+    border-radius: 13px;
+
+    outline: none;
+}
+
+.field input:focus,
+.field select:focus {
+    border-color: var(--purple);
+}
+
+.primary-btn {
+    width: 100%;
+
+    border: none;
+    border-radius: 14px;
+
+    padding: 15px;
+
+    background: var(--purple);
+    color: white;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.primary-btn:hover {
+    background: var(--purple2);
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 22px;
+}
+
+.brand {
+    font-size: 26px;
+    font-weight: 900;
+}
+
+.brand span {
+    color: var(--purple);
+}
+
+.streak-box {
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-radius: 14px;
+
+    padding: 10px 15px;
+
+    text-align: center;
+}
+
+.streak-number {
+    font-size: 20px;
+    font-weight: 900;
+
+    color: var(--purple2);
+}
+
+.streak-label {
+    font-size: 11px;
+    color: var(--muted);
+}
+
+
+/* =========================================================
+   PROFILE
+========================================================= */
+
+.profile-card {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(139,92,246,.20),
+            rgba(139,92,246,.05)
+        );
+
+    border: 1px solid var(--border);
+
+    border-radius: 20px;
+
+    padding: 20px;
+
+    margin-bottom: 20px;
+}
+
+.profile-title {
+    font-size: 13px;
+
+    color: var(--muted);
+
+    margin-bottom: 5px;
+}
+
+.profile-goal {
+    font-size: 22px;
+    font-weight: 900;
+}
+
+.profile-info {
+    margin-top: 8px;
+
+    color: var(--muted);
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   WEEK
+========================================================= */
+
+.week {
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    gap: 8px;
+
+    margin-bottom: 22px;
+}
+
+.day-btn {
+    border: 1px solid var(--border);
+
+    background: var(--card);
+
+    color: var(--muted);
+
+    border-radius: 13px;
+
+    padding: 11px 5px;
+
+    cursor: pointer;
+
+    font-weight: 700;
+    font-size: 13px;
+
+    transition: .2s;
+}
+
+.day-btn:hover {
+    border-color: var(--purple);
+}
+
+.day-btn.active {
+    background: var(--purple);
+
+    color: white;
+
+    border-color: var(--purple);
+}
+
+.day-btn.completed {
+    border-color: var(--green);
+
+    color: var(--green);
+}
+
+.day-btn.active.completed {
+    color: white;
+}
+
+
+/* =========================================================
+   DAY HEADER
+========================================================= */
+
+.day-header {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 15px;
+}
+
+.day-title {
+    font-size: 24px;
+    font-weight: 900;
+}
+
+.progress-text {
+    color: var(--muted);
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   EXERCISES
+========================================================= */
+
+.exercise-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 11px;
+}
+
+.exercise {
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-radius: 17px;
+
+    padding: 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    transition: .2s;
+}
+
+.exercise.done {
+    border-color:
+        rgba(74,222,128,.45);
+
+    background:
+        rgba(74,222,128,.05);
+}
+
+.check {
+    width: 24px;
+    height: 24px;
+
+    min-width: 24px;
+
+    border-radius: 8px;
+
+    border: 2px solid #4a3c5d;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    color: transparent;
+
+    font-weight: 900;
+}
+
+.exercise.done .check {
+    background: var(--green);
+
+    border-color: var(--green);
+
+    color: #07100a;
+}
+
+.exercise-info {
+    flex: 1;
+
+    min-width: 0;
+}
+
+
+/* =========================================================
+   CLICKABLE EXERCISE NAME
+========================================================= */
+
+.exercise-name {
+    display: inline-block;
+
+    border: none;
+
+    background: transparent;
+
+    color: white;
+
+    padding: 0;
+
+    font-size: 16px;
+
+    font-weight: 850;
+
+    text-align: left;
+
+    cursor: pointer;
+}
+
+.exercise-name:hover {
+    color: var(--purple2);
+
+    text-decoration: underline;
+}
+
+.exercise-meta {
+    margin-top: 5px;
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+}
+
+.weight {
+    color: var(--purple2);
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal {
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        rgba(0,0,0,.78);
+
+    backdrop-filter: blur(8px);
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    z-index: 1000;
+}
+
+.modal-card {
+    width: 100%;
+
+    max-width: 500px;
+
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-radius: 24px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.6);
+}
+
+.modal-header {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 18px 20px;
+
+    border-bottom:
+        1px solid var(--border);
+}
+
+.modal-title {
+    font-size: 20px;
+
+    font-weight: 900;
+}
+
+.close-btn {
+    width: 38px;
+    height: 38px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #241b31;
+
+    color: white;
+
+    font-size: 22px;
+
+    cursor: pointer;
+}
+
+.animation-area {
+    background: #08060c;
+
+    min-height: 300px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+}
+
+#exerciseFrame {
+    width: 100%;
+
+    max-height: 350px;
+
+    object-fit: contain;
+
+    display: block;
+}
+
+.animation-controls {
+    padding: 16px 20px 20px;
+}
+
+.frame-info {
+    text-align: center;
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+    margin-bottom: 12px;
+}
+
+.control-row {
+    display: flex;
+
+    gap: 10px;
+}
+
+.control-btn {
+    flex: 1;
+
+    border: 1px solid var(--border);
+
+    background: var(--card2);
+
+    color: white;
+
+    padding: 12px;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    font-weight: 700;
+}
+
+.control-btn:hover {
+    border-color: var(--purple);
+}
+
+.fps-label {
+    text-align: center;
+
+    margin-top: 12px;
+
+    color: var(--muted);
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   BOTTOM BUTTONS
+========================================================= */
+
+.bottom-buttons {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 10px;
+
+    margin-top: 22px;
+}
+
+.secondary-btn {
+    border: 1px solid var(--border);
+
+    background: var(--card);
+
+    color: var(--muted);
+
+    padding: 13px;
+
+    border-radius: 13px;
+
+    cursor: pointer;
+
+    font-weight: 700;
+
+    transition: .2s;
+}
+
+.secondary-btn:hover {
+    color: white;
+
+    border-color: var(--purple);
+}
+
+.end-week-btn {
+    background:
+        rgba(139,92,246,.12);
+
+    border-color:
+        rgba(139,92,246,.45);
+
+    color: var(--purple2);
+}
+
+.end-week-btn:hover {
+    background:
+        rgba(139,92,246,.22);
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.toast {
+    position: fixed;
+
+    bottom: 20px;
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    background: #21182d;
+
+    border: 1px solid var(--border);
+
+    color: white;
+
+    padding: 12px 18px;
+
+    border-radius: 12px;
+
+    z-index: 2000;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: .25s;
+
+    text-align: center;
+
+    white-space: nowrap;
+}
+
+.toast.show {
+    opacity: 1;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 500px) {
+
+    .container {
+        padding: 15px;
+    }
+
+    .setup-card {
+        padding: 23px;
+    }
+
+    .day-title {
+        font-size: 20px;
+    }
+
+    .exercise {
+        padding: 13px;
+    }
+
+    .animation-area {
+        min-height: 250px;
+    }
+
+    .bottom-buttons {
+        grid-template-columns: 1fr;
+    }
+
+    .toast {
+        max-width: calc(100% - 30px);
+
+        white-space: normal;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     SETUP SCREEN
+========================================================= -->
+
+<section id="setup">
+
+    <div class="setup-card">
+
+        <div class="logo">
+            Gym<span>Flow</span>
+        </div>
+
+        <div class="setup-subtitle">
+            Set up your profile and get your personalized
+            weekly gym routine.
+        </div>
+
+
+        <div class="field">
+
+            <label for="height">
+                Height (cm)
+            </label>
+
+            <input
+                id="height"
+                type="number"
+                placeholder="165"
+                min="100"
+                max="250"
+            >
+
+        </div>
+
+
+        <div class="field">
+
+            <label for="bodyWeight">
+                Weight (kg)
+            </label>
+
+            <input
+                id="bodyWeight"
+                type="number"
+                placeholder="57"
+                min="20"
+                max="300"
+            >
+
+        </div>
+
+
+        <div class="field">
+
+            <label for="goal">
+                Your goal
+            </label>
+
+            <select id="goal">
+
+                <option value="muscle">
+                    Build muscle
+                </option>
+
+                <option value="strength">
+                    Get stronger
+                </option>
+
+                <option value="fitness">
+                    Improve fitness
+                </option>
+
+                <option value="general">
+                    General fitness
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <button
+            class="primary-btn"
+            onclick="start()"
+        >
+            Start GymFlow
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     DASHBOARD
+========================================================= -->
+
+<section
+    id="dashboard"
+    class="hidden"
+>
+
+    <div class="container">
+
+
+        <!-- TOP BAR -->
+
+        <div class="topbar">
+
+            <div class="brand">
+                Gym<span>Flow</span>
+            </div>
+
+
+            <div class="streak-box">
+
+                <div
+                    id="streak"
+                    class="streak-number"
+                >
+                    0
+                </div>
+
+                <div class="streak-label">
+                    DAY STREAK
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PROFILE -->
+
+        <div class="profile-card">
+
+            <div class="profile-title">
+                YOUR GOAL
+            </div>
+
+            <div
+                id="goalText"
+                class="profile-goal"
+            >
+                Build Muscle
+            </div>
+
+            <div
+                id="subtitle"
+                class="profile-info"
+            >
+                Your weekly training plan
+            </div>
+
+        </div>
+
+
+
+        <!-- WEEK -->
+
+        <div
+            id="week"
+            class="week"
+        ></div>
+
+
+
+        <!-- DAY HEADER -->
+
+        <div class="day-header">
+
+            <div>
+
+                <div
+                    id="dayTitle"
+                    class="day-title"
+                >
+                    Monday
+                </div>
+
+                <div
+                    id="progress"
+                    class="progress-text"
+                >
+                    0 / 5 completed
+                </div>
+
+            </div>
+
+
+            <div
+                id="streak2"
+                class="progress-text"
+            >
+                0 days
+            </div>
+
+        </div>
+
+
+
+        <!-- EXERCISES -->
+
+        <div
+            id="exerciseList"
+            class="exercise-list"
+        ></div>
+
+
+
+        <!-- BOTTOM BUTTONS -->
+
+        <div class="bottom-buttons">
+
+            <button
+                class="secondary-btn end-week-btn"
+                onclick="endWeek()"
+            >
+                ✓ End Week
+            </button>
+
+
+            <button
+                class="secondary-btn"
+                onclick="resetProfile()"
+            >
+                Reset Profile
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     EXERCISE ANIMATION MODAL
+========================================================= -->
+
+<div
+    id="exerciseModal"
+    class="modal hidden"
+>
+
+    <div class="modal-card">
+
+
+        <div class="modal-header">
+
+            <div
+                id="modalTitle"
+                class="modal-title"
+            >
+                Exercise
+            </div>
+
+
+            <button
+                class="close-btn"
+                onclick="closeExercise()"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+
+        <div class="animation-area">
+
+            <img
+                id="exerciseFrame"
+                src=""
+                alt="Exercise demonstration"
+            >
+
+        </div>
+
+
+
+        <div class="animation-controls">
+
+            <div
+                id="frameInfo"
+                class="frame-info"
+            >
+                Frame 1 / 3
+            </div>
+
+
+            <div class="control-row">
+
+                <button
+                    class="control-btn"
+                    onclick="previousFrame()"
+                >
+                    ← Previous
+                </button>
+
+
+                <button
+                    id="playButton"
+                    class="control-btn"
+                    onclick="toggleAnimation()"
+                >
+                    ⏸ Pause
+                </button>
+
+
+                <button
+                    class="control-btn"
+                    onclick="nextFrame()"
+                >
+                    Next →
+                </button>
+
+            </div>
+
+
+            <div class="fps-label">
+                Animation: 3 FPS
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<div
+    id="toast"
+    class="toast"
+>
+    Saved
+</div>
+
+
+
+<script>
+
+
+/* =========================================================
+   EXERCISE DATA
+========================================================= */
+
+const exercises = {
+
+    "leg-press": {
+        name: "Leg Press",
+
+        frames: [
+            "leg-press-frame-1.svg",
+            "leg-press-frame-2.svg",
+            "leg-press-frame-3.svg"
+        ]
+    },
+
+
+    "leg-extension": {
+        name: "Leg Extension",
+
+        frames: [
+            "leg-extension-frame-1.svg",
+            "leg-extension-frame-2.svg",
+            "leg-extension-frame-3.svg"
+        ]
+    },
+
+
+    "leg-curl": {
+        name: "Leg Curl",
+
+        frames: [
+            "leg-curl-frame-1.svg",
+            "leg-curl-frame-2.svg",
+            "leg-curl-frame-3.svg"
+        ]
+    },
+
+
+    "hip-abduction": {
+        name: "Hip Abduction",
+
+        frames: [
+            "hip-abduction-machine-frame-1.svg",
+            "hip-abduction-machine-frame-2.svg",
+            "hip-abduction-machine-frame-3.svg"
+        ]
+    },
+
+
+    "standing-calf-raise": {
+        name: "Standing Calf Raise",
+
+        frames: [
+            "standing-calf-raise-frame-1.svg",
+            "standing-calf-raise-frame-2.svg",
+            "standing-calf-raise-frame-3.svg"
+        ]
+    },
+
+
+    "wide-grip-lat-pulldown": {
+        name: "Wide-Grip Lat Pulldown",
+
+        frames: [
+            "wide-grip-lat-pulldown-frame-1.svg",
+            "wide-grip-lat-pulldown-frame-2.svg",
+            "wide-grip-lat-pulldown-frame-3.svg"
+        ]
+    },
+
+
+    "seated-row": {
+        name: "Seated Row",
+
+        frames: [
+            "seated-row-frame-1.svg",
+            "seated-row-frame-2.svg",
+            "seated-row-frame-3.svg"
+        ]
+    },
+
+
+    "assisted-pull-up": {
+        name: "Assisted Pull-Up",
+
+        frames: [
+            "assisted-pull-up-frame-1.svg",
+            "assisted-pull-up-frame-2.svg",
+            "assisted-pull-up-frame-3.svg"
+        ]
+    },
+
+
+    "preacher-curl": {
+        name: "Preacher Curl",
+
+        frames: [
+            "preacher-curl-frame-1.svg",
+            "preacher-curl-frame-2.svg",
+            "preacher-curl-frame-3.svg"
+        ]
+    },
+
+
+    "crunch": {
+        name: "Crunch",
+
+        frames: [
+            "crunch-frame-1.svg",
+            "crunch-frame-2.svg",
+            "crunch-frame-3.svg"
+        ]
+    },
+
+
+    "reverse-crunch": {
+        name: "Reverse Crunch",
+
+        frames: [
+            "reverse-crunch-frame-1.svg",
+            "reverse-crunch-frame-2.svg",
+            "reverse-crunch-frame-3.svg"
+        ]
+    },
+
+
+    "plank": {
+        name: "Plank",
+
+        frames: [
+            "plank-frame-1.svg"
+        ]
+    },
+
+
+    "dead-bug": {
+        name: "Dead Bug",
+
+        frames: [
+            "dead-bug-frame-1.svg",
+            "dead-bug-frame-2.svg",
+            "dead-bug-frame-3.svg"
+        ]
+    },
+
+
+    "machine-chest-press": {
+        name: "Machine Chest Press",
+
+        frames: [
+            "machine-chest-press-frame-1.svg",
+            "machine-chest-press-frame-2.svg",
+            "machine-chest-press-frame-3.svg"
+        ]
+    },
+
+
+    "pec-deck": {
+        name: "Pec Deck",
+
+        frames: [
+            "pec-deck-frame-1.svg",
+            "pec-deck-frame-2.svg",
+            "pec-deck-frame-3.svg"
+        ]
+    },
+
+
+    "machine-shoulder-press": {
+        name: "Machine Shoulder Press",
+
+        frames: [
+            "machine-shoulder-press-frame-1.svg",
+            "machine-shoulder-press-frame-2.svg",
+            "machine-shoulder-press-frame-3.svg"
+        ]
+    },
+
+
+    "lateral-raise": {
+        name: "Lateral Raise",
+
+        frames: [
+            "lateral-raise-frame-1.svg",
+            "lateral-raise-frame-2.svg",
+            "lateral-raise-frame-3.svg"
+        ]
+    },
+
+
+    "hack-squat": {
+        name: "Hack Squat",
+
+        frames: [
+            "hack-squat-frame-1.svg",
+            "hack-squat-frame-2.svg",
+            "hack-squat-frame-3.svg"
+        ]
+    }
+
+};
+
+
+
+/* =========================================================
+   WEEKLY PLAN
+========================================================= */
+
+const plans = {
+
+    Monday: [
+
+        {
+            exercise: "leg-press",
+            sets: "3 × 10–12",
+            weight: "30–50 kg"
+        },
+
+        {
+            exercise: "leg-extension",
+            sets: "2–3 × 10–12",
+            weight: "10–20 kg"
+        },
+
+        {
+            exercise: "leg-curl",
+            sets: "2–3 × 10–12",
+            weight: "10–20 kg"
+        },
+
+        {
+            exercise: "hip-abduction",
+            sets: "2 × 12–15",
+            weight: "10–20 kg"
+        },
+
+        {
+            exercise: "standing-calf-raise",
+            sets: "3 × 12–15",
+            weight: "10–20 kg"
+        }
+
+    ],
+
+
+    Tuesday: [
+
+        {
+            exercise: "wide-grip-lat-pulldown",
+            sets: "2–3 × 10",
+            weight: "15–25 kg"
+        },
+
+        {
+            exercise: "seated-row",
+            sets: "2–3 × 10",
+            weight: "15–25 kg"
+        },
+
+        {
+            exercise: "assisted-pull-up",
+            sets: "2 × 8–12",
+            weight: "Comfortable assistance"
+        },
+
+        {
+            exercise: "preacher-curl",
+            sets: "2 × 10",
+            weight: "5–10 kg"
+        }
+
+    ],
+
+
+    Wednesday: [
+
+        {
+            exercise: "crunch",
+            sets: "3 × 12–15",
+            weight: "Bodyweight"
+        },
+
+        {
+            exercise: "reverse-crunch",
+            sets: "3 × 10–15",
+            weight: "Bodyweight"
+        },
+
+        {
+            exercise: "plank",
+            sets: "3 × 20–40 sec",
+            weight: "Bodyweight"
+        },
+
+        {
+            exercise: "dead-bug",
+            sets: "2 × 8–10 / side",
+            weight: "Bodyweight"
+        }
+
+    ],
+
+
+    Thursday: [
+
+        {
+            exercise: "machine-chest-press",
+            sets: "3 × 10–12",
+            weight: "10–20 kg"
+        },
+
+        {
+            exercise: "pec-deck",
+            sets: "2 × 10–12",
+            weight: "10–20 kg"
+        },
+
+        {
+            exercise: "machine-shoulder-press",
+            sets: "2 × 10",
+            weight: "5–10 kg"
+        },
+
+        {
+            exercise: "lateral-raise",
+            sets: "2 × 12–15",
+            weight: "5–10 kg"
+        }
+
+    ],
+
+
+    Friday: [
+
+        {
+            exercise: "hack-squat",
+            sets: "3 × 8–12",
+            weight: "Start very light"
+        },
+
+        {
+            exercise: "leg-curl",
+            sets: "3 × 10–12",
+            weight: "10–20 kg"
+        },
+
+        {
+            exercise: "leg-extension",
+            sets: "2 × 10–12",
+            weight: "10–20 kg"
+        },
+
+        {
+            exercise: "standing-calf-raise",
+            sets: "3 × 12–15",
+            weight: "10–20 kg"
+        }
+
+    ]
+
+};
+
+
+
+/* =========================================================
+   APP STATE
+========================================================= */
+
+const days = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday"
+];
+
+
+let data =
+    JSON.parse(
+        localStorage.getItem("gymflow")
+    ) || null;
+
+
+let currentDay = "Monday";
+
+
+/* =========================================================
+   ANIMATION STATE
+========================================================= */
+
+let animationTimer = null;
+
+let currentFrames = [];
+
+let currentFrame = 0;
+
+let animationPlaying = true;
+
+
+
+/* =========================================================
+   START
+========================================================= */
+
+function start() {
+
+    const height =
+        document.getElementById("height").value;
+
+    const weight =
+        document.getElementById("bodyWeight").value;
+
+    const goal =
+        document.getElementById("goal").value;
+
+
+    if (!height || !weight) {
+
+        toast(
+            "Please enter your height and weight."
+        );
+
+        return;
+    }
+
+
+    data = {
+
+        height: Number(height),
+
+        weight: Number(weight),
+
+        goal: goal,
+
+        completed: {},
+
+        completedDays: [],
+
+        totalStreak: 0
+
+    };
+
+
+    save();
+
+    showDashboard();
+
+}
+
+
+
+/* =========================================================
+   SAVE
+========================================================= */
+
+function save() {
+
+    localStorage.setItem(
+        "gymflow",
+        JSON.stringify(data)
+    );
+
+}
+
+
+
+/* =========================================================
+   DASHBOARD
+========================================================= */
+
+function showDashboard() {
+
+    document
+        .getElementById("setup")
+        .classList.add("hidden");
+
+
+    document
+        .getElementById("dashboard")
+        .classList.remove("hidden");
+
+
+    const goalNames = {
+
+        muscle: "Build Muscle",
+
+        strength: "Get Stronger",
+
+        fitness: "Improve Fitness",
+
+        general: "General Fitness"
+
+    };
+
+
+    document
+        .getElementById("goalText")
+        .textContent =
+        goalNames[data.goal] ||
+        "General Fitness";
+
+
+    document
+        .getElementById("subtitle")
+        .textContent =
+        `${data.height} cm • ${data.weight} kg`;
+
+
+    renderWeek();
+
+    selectDay(currentDay);
+
+    updateStreak();
+
+}
+
+
+
+/* =========================================================
+   WEEK BUTTONS
+========================================================= */
+
+function renderWeek() {
+
+    const week =
+        document.getElementById("week");
+
+
+    week.innerHTML = "";
+
+
+    days.forEach(day => {
+
+        const button =
+            document.createElement("button");
+
+
+        button.className =
+            "day-btn";
+
+
+        if (day === currentDay) {
+
+            button.classList.add(
+                "active"
+            );
+
+        }
+
+
+        if (
+            data.completedDays &&
+            data.completedDays.includes(day)
+        ) {
+
+            button.classList.add(
+                "completed"
+            );
+
+        }
+
+
+        button.textContent =
+            day.substring(0, 3);
+
+
+        button.onclick = () => {
+
+            selectDay(day);
+
+        };
+
+
+        week.appendChild(button);
+
+    });
+
+}
+
+
+
+/* =========================================================
+   SELECT DAY
+========================================================= */
+
+function selectDay(day) {
+
+    currentDay = day;
+
+    renderWeek();
+
+    renderDay();
+
+}
+
+
+
+/* =========================================================
+   EXERCISE KEY
+========================================================= */
+
+function exerciseKey(day, index) {
+
+    return `${day}-${index}`;
+
+}
+
+
+
+/* =========================================================
+   RENDER DAY
+========================================================= */
+
+function renderDay() {
+
+    const list =
+        document.getElementById(
+            "exerciseList"
+        );
+
+
+    list.innerHTML = "";
+
+
+    document
+        .getElementById("dayTitle")
+        .textContent =
+        currentDay;
+
+
+    const workout =
+        plans[currentDay];
+
+
+    let completedCount = 0;
+
+
+    workout.forEach(
+        (item, index) => {
+
+            const key =
+                exerciseKey(
+                    currentDay,
+                    index
+                );
+
+
+            const done =
+                data.completed[key] === true;
+
+
+            if (done) {
+
+                completedCount++;
+
+            }
+
+
+            const exercise =
+                exercises[item.exercise];
+
+
+            const row =
+                document.createElement(
+                    "div"
+                );
+
+
+            row.className =
+                "exercise";
+
+
+            if (done) {
+
+                row.classList.add(
+                    "done"
+                );
+
+            }
+
+
+            row.innerHTML = `
+
+                <div
+                    class="check"
+                    onclick="toggleExercise(${index})"
+                >
+                    ✓
+                </div>
+
+                <div class="exercise-info">
+
+                    <button
+                        class="exercise-name"
+                        onclick="openExercise('${item.exercise}')"
+                    >
+                        ${
+                            exercise
+                                ? exercise.name
+                                : item.exercise
+                        }
+                    </button>
+
+                    <div class="exercise-meta">
+
+                        <span>
+                            ${item.sets}
+                        </span>
+
+                        <span>•</span>
+
+                        <span class="weight">
+                            ${item.weight}
+                        </span>
+
+                    </div>
+
+                </div>
+
+            `;
+
+
+            list.appendChild(row);
+
+        }
+    );
+
+
+    document
+        .getElementById("progress")
+        .textContent =
+        `${completedCount} / ${workout.length} completed`;
+
+
+    updateStreak();
+
+}
+
+
+
+/* =========================================================
+   TOGGLE EXERCISE
+========================================================= */
+
+function toggleExercise(index) {
+
+    const key =
+        exerciseKey(
+            currentDay,
+            index
+        );
+
+
+    data.completed[key] =
+        !data.completed[key];
+
+
+    checkDayCompletion();
+
+
+    save();
+
+
+    renderDay();
+
+
+    if (data.completed[key]) {
+
+        toast(
+            "Exercise completed ✓"
+        );
+
+    }
+
+}
+
+
+
+/* =========================================================
+   CHECK DAY COMPLETION
+========================================================= */
+
+function checkDayCompletion() {
+
+    const workout =
+        plans[currentDay];
+
+
+    const allDone =
+        workout.every(
+            (_, index) =>
+                data.completed[
+                    exerciseKey(
+                        currentDay,
+                        index
+                    )
+                ] === true
+        );
+
+
+    if (
+        allDone &&
+        !data.completedDays.includes(
+            currentDay
+        )
+    ) {
+
+        data.completedDays.push(
+            currentDay
+        );
+
+
+        toast(
+            `${currentDay} completed 🔥`
+        );
+
+    }
+
+
+    if (
+        !allDone &&
+        data.completedDays.includes(
+            currentDay
+        )
+    ) {
+
+        data.completedDays =
+            data.completedDays.filter(
+                day =>
+                    day !== currentDay
+            );
+
+    }
+
+}
+
+
+
+/* =========================================================
+   STREAK
+========================================================= */
+
+function updateStreak() {
+
+    const streak =
+        data.totalStreak || 0;
+
+
+    document
+        .getElementById("streak")
+        .textContent =
+        streak;
+
+
+    document
+        .getElementById("streak2")
+        .textContent =
+        `${streak} day${
+            streak === 1
+                ? ""
+                : "s"
+        } streak`;
+
+}
+
+
+
+/* =========================================================
+   END WEEK
+========================================================= */
+
+function endWeek() {
+
+    const completedThisWeek =
+        data.completedDays.length;
+
+
+    if (completedThisWeek === 0) {
+
+        toast(
+            "You completed 0 days this week."
+        );
+
+        return;
+
+    }
+
+
+    const confirmed =
+        confirm(
+            `You completed ${completedThisWeek} ` +
+            `day${
+                completedThisWeek === 1
+                    ? ""
+                    : "s"
+            } this week.\n\n` +
+
+            `Add them to your streak and ` +
+            `start a new week?`
+        );
+
+
+    if (!confirmed) {
+
+        return;
+
+    }
+
+
+    /*
+       IMPORTANT:
+
+       The streak is based on the number
+       of workout days completed.
+
+       Skipping a day does NOT break it.
+    */
+
+    data.totalStreak =
+        (data.totalStreak || 0)
+        + completedThisWeek;
+
+
+    /*
+       Start a completely fresh week.
+    */
+
+    data.completed = {};
+
+    data.completedDays = [];
+
+
+    save();
+
+
+    currentDay = "Monday";
+
+
+    renderWeek();
+
+    renderDay();
+
+    updateStreak();
+
+
+    toast(
+        `Week saved! +${completedThisWeek} ` +
+        `day${
+            completedThisWeek === 1
+                ? ""
+                : "s"
+        } 🔥`
+    );
+
+}
+
+
+
+/* =========================================================
+   EXERCISE ANIMATION
+   3 FPS = 333.333 milliseconds
+========================================================= */
+
+function openExercise(id) {
+
+    const exercise =
+        exercises[id];
+
+
+    if (!exercise) {
+
+        toast(
+            "Animation not found."
+        );
+
+        return;
+
+    }
+
+
+    currentFrames =
+        exercise.frames;
+
+
+    currentFrame = 0;
+
+
+    animationPlaying = true;
+
+
+    document
+        .getElementById("modalTitle")
+        .textContent =
+        exercise.name;
+
+
+    document
+        .getElementById("exerciseModal")
+        .classList.remove("hidden");
+
+
+    updateFrame();
+
+
+    document
+        .getElementById("playButton")
+        .textContent =
+        "⏸ Pause";
+
+
+    startAnimation();
+
+}
+
+
+
+/* =========================================================
+   START 3 FPS
+========================================================= */
+
+function startAnimation() {
+
+    stopAnimation();
+
+
+    if (!animationPlaying) {
+
+        return;
+
+    }
+
+
+    animationTimer =
+        setInterval(
+            () => {
+
+                currentFrame++;
+
+
+                if (
+                    currentFrame >=
+                    currentFrames.length
+                ) {
+
+                    currentFrame = 0;
+
+                }
+
+
+                updateFrame();
+
+            },
+
+            1000 / 3
+        );
+
+}
+
+
+
+/* =========================================================
+   STOP ANIMATION
+========================================================= */
+
+function stopAnimation() {
+
+    if (
+        animationTimer !== null
+    ) {
+
+        clearInterval(
+            animationTimer
+        );
+
+        animationTimer = null;
+
+    }
+
+}
+
+
+
+/* =========================================================
+   UPDATE FRAME
+========================================================= */
+
+function updateFrame() {
+
+    const image =
+        document.getElementById(
+            "exerciseFrame"
+        );
+
+
+    image.src =
+        currentFrames[
+            currentFrame
+        ];
+
+
+    document
+        .getElementById("frameInfo")
+        .textContent =
+        `Frame ${
+            currentFrame + 1
+        } / ${
+            currentFrames.length
+        }`;
+
+}
+
+
+
+/* =========================================================
+   PLAY / PAUSE
+========================================================= */
+
+function toggleAnimation() {
+
+    animationPlaying =
+        !animationPlaying;
+
+
+    const button =
+        document.getElementById(
+            "playButton"
+        );
+
+
+    if (animationPlaying) {
+
+        button.textContent =
+            "⏸ Pause";
+
+
+        startAnimation();
+
+    } else {
+
+        button.textContent =
+            "▶ Play";
+
+
+        stopAnimation();
+
+    }
+
+}
+
+
+
+/* =========================================================
+   NEXT FRAME
+========================================================= */
+
+function nextFrame() {
+
+    currentFrame++;
+
+
+    if (
+        currentFrame >=
+        currentFrames.length
+    ) {
+
+        currentFrame = 0;
+
+    }
+
+
+    updateFrame();
+
+}
+
+
+
+/* =========================================================
+   PREVIOUS FRAME
+========================================================= */
+
+function previousFrame() {
+
+    currentFrame--;
+
+
+    if (currentFrame < 0) {
+
+        currentFrame =
+            currentFrames.length - 1;
+
+    }
+
+
+    updateFrame();
+
+}
+
+
+
+/* =========================================================
+   CLOSE EXERCISE
+========================================================= */
+
+function closeExercise() {
+
+    stopAnimation();
+
+
+    document
+        .getElementById(
+            "exerciseModal"
+        )
+        .classList.add("hidden");
+
+
+    currentFrames = [];
+
+    currentFrame = 0;
+
+}
+
+
+
+/* =========================================================
+   CLICK OUTSIDE MODAL
+========================================================= */
+
+document
+    .getElementById("exerciseModal")
+    .addEventListener(
+        "click",
+        function(event) {
+
+            if (
+                event.target === this
+            ) {
+
+                closeExercise();
+
+            }
+
+        }
+    );
+
+
+
+/* =========================================================
+   ESCAPE CLOSES MODAL
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Escape" &&
+            !document
+                .getElementById(
+                    "exerciseModal"
+                )
+                .classList
+                .contains("hidden")
+        ) {
+
+            closeExercise();
+
+        }
+
+    }
+);
+
+
+
+/* =========================================================
+   RESET PROFILE
+========================================================= */
+
+function resetProfile() {
+
+    const confirmed =
+        confirm(
+            "Reset your entire GymFlow profile?"
+        );
+
+
+    if (!confirmed) {
+
+        return;
+
+    }
+
+
+    localStorage.removeItem(
+        "gymflow"
+    );
+
+
+    location.reload();
+
+}
+
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+let toastTimer = null;
+
+
+function toast(message) {
+
+    const element =
+        document.getElementById(
+            "toast"
+        );
+
+
+    element.textContent =
+        message;
+
+
+    element.classList.add(
+        "show"
+    );
+
+
+    clearTimeout(
+        toastTimer
+    );
+
+
+    toastTimer =
+        setTimeout(
+            () => {
+
+                element.classList.remove(
+                    "show"
+                );
+
+            },
+
+            2200
+        );
+
+}
+
+
+
+/* =========================================================
+   LOAD SAVED PROFILE
+========================================================= */
+
+if (data) {
+
+    /*
+       Compatibility with older
+       GymFlow saves.
+    */
+
+    if (!data.completed) {
+
+        data.completed = {};
+
+    }
+
+
+    if (!data.completedDays) {
+
+        data.completedDays = [];
+
+    }
+
+
+    if (
+        typeof data.totalStreak !==
+        "number"
+    ) {
+
+        data.totalStreak = 0;
+
+    }
+
+
+    save();
+
+
+    showDashboard();
+
+}
+
+</script>
+
+</body>
+</html>
